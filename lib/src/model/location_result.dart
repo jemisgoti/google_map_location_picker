@@ -9,14 +9,14 @@ class LocationResult {
 
   /// Google Maps place ID
   String placeId;
-
+  String name;
   /// Latitude/Longitude of the selected location.
   LatLng latLng;
 
-  LocationResult({this.latLng, this.address, this.placeId});
+  LocationResult({this.latLng, this.address, this.placeId,this.name});
 
   @override
   String toString() {
-    return 'LocationResult{address: $address, latLng: $latLng, placeId: $placeId}';
+    return 'LocationResult{address: $address, latLng: $latLng, placeId: $placeId,name:$name}';
   }
 }

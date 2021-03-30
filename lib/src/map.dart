@@ -82,6 +82,7 @@ class MapPickerState extends State<MapPicker> {
   String _address;
 
   String _placeId;
+  String _name;
 
   void _onToggleMapTypePressed() {
     final MapType nextType =
@@ -238,6 +239,8 @@ class MapPickerState extends State<MapPicker> {
                       builder: (context, data) {
                         _address = data["address"];
                         _placeId = data["placeId"];
+                        _name=data['name'];
+
                         return Text(
                           _address ??
                               S.of(context)?.unnamedPlace ??
@@ -255,6 +258,7 @@ class MapPickerState extends State<MapPicker> {
                           latLng: locationProvider.lastIdleLocation,
                           address: _address,
                           placeId: _placeId,
+                          name:_name
                         )
                       });
                     },
@@ -282,13 +286,15 @@ class MapPickerState extends State<MapPicker> {
 
       return {
         "placeId": response['results'][0]['place_id'],
-        "address": response['results'][0]['formatted_address']
+        "address": response['results'][0]['formatted_address'],
+        
+        "name": response['results'][0]['address_components'][0]['short_name']
       };
     } catch (e) {
       print(e);
     }
 
-    return {"placeId": null, "address": null};
+    return {"placeId": null, "address": null,"name":null};
   }
 
   Widget pin() {

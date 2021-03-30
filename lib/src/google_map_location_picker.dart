@@ -355,6 +355,7 @@ class LocationPickerState extends State<LocationPicker> {
         locationResult.address = road;
         locationResult.latLng = latLng;
         locationResult.placeId = placeId;
+        Lo
       });
     }
   }
